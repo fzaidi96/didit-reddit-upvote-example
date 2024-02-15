@@ -3,6 +3,21 @@ import { CommentList } from "@/components/CommentList";
 import { Vote } from "@/components/Vote";
 import { db } from "@/db";
 
+export async function generateMetadata({params}) {
+  const postId = params.postId
+  const { rows: posts } = await db.query(`SELECT title FROM posts WHERE id = $1`, [postId]);
+
+  if (posts.length === 0) {
+    return {
+      title: "Post not found | didit"
+    };
+  }
+
+  return {
+    title: `${posts[0].title} | didit`,
+  };
+}
+
 export default async function SinglePostPage({ params }) {
   const postId = params.postId;
 
@@ -27,8 +42,9 @@ export default async function SinglePostPage({ params }) {
   return (
     <div className="max-w-screen-lg mx-auto pt-10">
       <h1 className="text-2xl">
-        {post.vote_total} - {post.title}
+        {post.title}
       </h1>
+      {/* removed post votes from the title */}
       <p className="text-zinc-400 border-b border-zinc-800 mb-4">
         Posted by {post.name}
       </p>
