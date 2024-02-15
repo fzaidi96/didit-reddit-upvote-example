@@ -1,3 +1,11 @@
+## Deploy Link
+See the live site here: https://didit-reddit-upvote-example-gray.vercel.app/
+Latest commits: 
+- [x] Add metadata to each post
+- [x] Redirect user to a login page if they try to vote AND/OR comment if not logged in
+- [x] Ammended SQL to prevent a user from voting more than once on a post
+
+
 ## Upvote
 
 Upvote is a Reddit-esque web application that allows users to create posts, upvote and downvote posts, and common on posts in a multi-threaded nested list.
