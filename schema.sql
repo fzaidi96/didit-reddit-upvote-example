@@ -79,3 +79,10 @@ CREATE TABLE votes (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(user_id, post_id, comment_id, vote_type)
 );
+
+ALTER TABLE votes
+ADD CONSTRAINT one_vote_only
+UNIQUE (user_id, post_id);
+
+-- used this as a reference to understand: https://www.w3schools.com/sql/sql_unique.asp 
+-- in order to get this to work,  I had to delete all the existing votes using DELETE FROM votes
