@@ -9,8 +9,8 @@ export async function Vote({ postId, votes }) {
   async function upvote() {
     "use server";
     const session = await auth();
+    // {!session && <NotLoggedInModal />}
     if(session) {
-      console.log("Upvote", postId, "by user", session.user.id);
       try {
         await db.query(
           "INSERT INTO votes (user_id, post_id, vote, vote_type) VALUES ($1, $2, $3, $4)",
@@ -31,8 +31,8 @@ export async function Vote({ postId, votes }) {
   async function downvote() {
     "use server";
     const session = await auth();
+    // {!session && <NotLoggedInModal />}
     if(session) {
-      console.log("Upvote", postId, "by user", session.user.id);
       try {
         await db.query(
           "INSERT INTO votes (user_id, post_id, vote, vote_type) VALUES ($1, $2, $3, $4)",
@@ -64,4 +64,4 @@ export async function Vote({ postId, votes }) {
     </>
   );
 }
-// Paul helped me with the error message by sharing his code. I wanted to use a modal but by doing {!session && <NotLoggedInModal />} but I believe the modals wouldn't appear because the up and down vote functions are use server? 
+// Paul helped me with the error message by sharing his code. I wanted to use a modal by doing {!session && <NotLoggedInModal />} but I believe the modals wouldn't appear because the up and down vote functions are use server? 
