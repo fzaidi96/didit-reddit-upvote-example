@@ -64,4 +64,4 @@ export async function Vote({ postId, votes }) {
     </>
   );
 }
-// Paul helped me with the error message by sharing his code. I wanted to use a modal but by doing {!session && <NotLoggedInModal />} but I believe the modals wouldn't appear because the up and down vote functions use server? 
+// Paul helped me with the error message by sharing his code. I wanted to use a modal but by doing {!session && <NotLoggedInModal />} but I believe the modals wouldn't appear because the up and down vote functions are use server? 
